@@ -1,0 +1,21 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  datasource:
+    url: jdbc:mysql://localhost:3306/productdb?useSSL=false&createDatabaseIfNotExist=true
+    username: root
+    password: root
+  kafka:
+    bootstrap-servers:
+      #- localhost:9091
+      - localhost:9092
+      #- localhost:9093
+    template:
+      default-topic: user-service-event
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.LongSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
